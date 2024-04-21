@@ -1,117 +1,57 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {Pressable, SafeAreaView, StyleSheet, Text} from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
-
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+const App = () => {
+  const nuevaCitaHandler = () => {
+    console.log('Discte clack al crear nueva cita...');
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.titulo}>
+        Administrador de citas {''}
+        <Text style={styles.tituloBold}>Veterinaria</Text>
+      </Text>
+      <Pressable style={styles.btnNuevaCita} onPress={nuevaCitaHandler}>
+        <Text style={styles.btnTextoNuevaCita}>Nueva cita</Text>
+      </Pressable>
     </SafeAreaView>
   );
-}
+};
 
+// para los estilos
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  container: {
+    backgroundColor: '#0072AF',
+    flex: 1,
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  titulo: {
+    textAlign: 'center',
+    // textTransform: 'uppercase',
+    marginTop: 20,
+    fontSize: 26,
+    color: '#FFFFFF',
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+
+  tituloBold: {
+    fontWeight: '900',
+    color: '#EAFB10',
   },
-  highlight: {
-    fontWeight: '700',
+
+  btnNuevaCita: {
+    backgroundColor: '#6D2891',
+    padding: 15,
+    marginTop: 30,
+    marginHorizontal: 20,
+    borderRadius: 10,
+  },
+
+  btnTextoNuevaCita: {
+    textAlign: 'center',
+    color: '#FFF',
+    fontSize: 15,
+    fontWeight: '900',
+    textTransform: 'uppercase',
   },
 });
 
